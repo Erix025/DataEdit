@@ -135,6 +135,35 @@ namespace Index.DataEdit
             sw.Dispose();
             fs.Dispose();
         }
+        public static void Write(List<string> str , string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            //开始写入
+            if (str != null)
+            {
+                foreach (string line in str)
+                {
+                    if (line.Contains("\n"))
+                    {
+                        sw.WriteLine(Function.ToFormatString(line));
+                    }
+                    else
+                    {
+                        sw.WriteLine(line);
+                    }
+                }
+            }
+            else
+            {
+                sw.WriteLine("");
+            }
+            //清空缓冲区
+            sw.Flush();
+            //关闭流
+            sw.Dispose();
+            fs.Dispose();
+        }
         /// <summary>
         /// 在文件指定行后插入文字
         /// </summary>
