@@ -324,7 +324,7 @@ namespace Index.DataEdit
             Value = value;
         }
     }
-    class Function
+    public class Function
     {
         public static string ToFormatString(string input)
         {
